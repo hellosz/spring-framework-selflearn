@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-init-method="init" default-destroy-method="destroy" xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 构造函数初始化  -->
+    <bean id="accountDao" name="dao1" class="com.ralph.domain.dao.AccountDao">
+        <property name="id" value="1"/>
+        <property name="name" value="DingDang"/>
+        <property name="email" value="demo@patpat.com"/>
+        <property name="address" value="wan li da building"/>
+    </bean>
+
+    <bean id="innerDao" name="innerDaoName" class="com.ralph.domain.dao.OuterBeanDao.InnerBeanDao">
+        <property name="name" value="custom bean name"/>
+    </bean>
+
+    <alias name="accountDao" alias="dao3"/>
+
+    <bean id="lifeCycleCallback" class="com.ralph.domain.pojo.LifeCycleCallback"/>
+</beans>

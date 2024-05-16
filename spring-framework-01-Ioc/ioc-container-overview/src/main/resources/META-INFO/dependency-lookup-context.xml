@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--    domains-->
+    <bean id="user" class="com.ralph.ioc.container.overview.domain.User">
+        <property name="id" value="1"/>
+        <property name="name" value="ralph"/>
+    </bean>
+
+    <bean id="superUser" class="com.ralph.ioc.container.overview.domain.SuperUser" parent="user" primary="true">
+        <property name="address" value="shenzhen"/>
+    </bean>
+
+    <!-- repository by id-->
+    <bean id="userRepositoryById" class="com.ralph.ioc.container.overview.repository.UserRepositoryById">
+        <property name="users">
+            <util:list>
+                <ref bean="user"/>
+                <ref bean="superUser"/>
+            </util:list>
+        </property>
+    </bean>
+
+    <!-- repository by type -->
+    <!-- autowire 自动装配 -->
+    <bean id="userRepositoryByType" class="com.ralph.ioc.container.overview.repository.UserRepositoryByType"
+          autowire="byType">
+    </bean>
+    <!-- services -->
+
+<!--    延迟查找-->
+    <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+        <property name="targetBeanName" value="user"/>
+    </bean>
+
+    <!-- more bean definitions for services go here -->
+
+</beans>

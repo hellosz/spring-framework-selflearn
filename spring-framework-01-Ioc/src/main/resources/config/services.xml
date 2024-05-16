@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    <bean id="..." class="...">-->
+<!--        &lt;!&ndash; collaborators and configuration for this bean go here &ndash;&gt;-->
+<!--    </bean>-->
+
+<!--    <bean id="..." class="...">-->
+<!--        &lt;!&ndash; collaborators and configuration for this bean go here &ndash;&gt;-->
+<!--    </bean>-->
+
+
+    <!-- more bean definitions go here -->
+    <bean id="hero" class="com.ralph.domain.pojo.Hero">
+
+    </bean>
+
+    <bean id="accountService" class="com.ralph.service.AccountServiceImpl">
+        <!-- ref=accountDao 解析异常，但是实际在容器中是存在的-->
+        <property name="accountDao" ref="accountDao"/>
+    </bean>
+
+    <bean id="accountService2" class="com.ralph.service.AccountServiceImpl">
+    </bean>
+
+    <!--  通过 factory 创建对象-->
+    <bean id="clientService" class="com.ralph.factory.ClientFactory" factory-method="getClientService"/>
+
+    <!-- 实例静态工厂 -->
+    <bean id="instantClientFactory" class="com.ralph.factory.InstantClientFactory"/>
+
+    <!-- 通过 instant factory 创建对象-->
+    <bean id="iClientService" factory-bean="instantClientFactory" factory-method="getInstantClientService"/>
+
+    <bean id="commandService" class="com.ralph.service.CommandService"/>
+
+    <!--  lifecycle -->
+    <!-- 注册初始化和销毁方法 -->
+    <!-- 避免影响，屏蔽掉注册 bean -->
+<!--    <bean id="lifeCycleService" class="com.ralph.service.LifeCycleService" init-method="initMethod" destroy-method="destroyMethod">-->
+<!--        <property name="tag" value="manually tag"/>-->
+<!--    </bean>-->
+</beans>
