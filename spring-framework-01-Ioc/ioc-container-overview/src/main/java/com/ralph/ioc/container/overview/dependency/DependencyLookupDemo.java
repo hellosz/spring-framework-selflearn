@@ -7,7 +7,6 @@ import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.awt.*;
 import java.util.Map;
 
 /**
@@ -16,7 +15,7 @@ import java.util.Map;
  */
 public class DependencyLookupDemo {
     public static void main(String[] args) {
-        String path = "META-INFO/dependency-lookup-context.xml";
+        String path = "META-INF/dependency-lookup-context.xml";
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(path);
 
         // 根据名称查找

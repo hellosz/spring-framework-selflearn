@@ -1,19 +1,13 @@
 package com.ralph.bean.definition.service;
 
 import com.ralph.ioc.container.overview.domain.SuperUser;
-import com.ralph.ioc.container.overview.domain.User;
 import org.springframework.beans.MutablePropertyValues;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.BeanDefinitionDsl;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.HashMap;
 
 /**
  * {@link org.springframework.beans.factory.config.BeanDefinition} Bean Definition 创建示例
@@ -102,7 +96,7 @@ public class BeanDefinitionCreationDemo {
      * @return
      */
     public static ApplicationContext getApplicationContext() {
-        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath:/META-INFO/bean-definitions-context.xml");
+        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/bean-definitions-context.xml");
 
         return classPathXmlApplicationContext;
     }

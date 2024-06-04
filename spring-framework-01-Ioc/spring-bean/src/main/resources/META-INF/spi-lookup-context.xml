@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- instance factory method-->
+    <bean id="customServiceFactory" class="com.ralph.bean.definition.factory.CustomServiceFactory"/>
+
+    <!-- ListFactoryBean to create a list of CustomService -->
+    <bean id="customServiceList" class="org.springframework.beans.factory.config.ListFactoryBean">
+        <property name="sourceList">
+            <bean factory-bean="customServiceFactory" factory-method="loadCustomService"/>
+        </property>
+    </bean>
+
+    <!-- Example Bean that uses the list of CustomService -->
+    <bean id="serviceLoaderDemo" class="com.ralph.bean.definition.service.ServiceLoaderDemo">
+        <property name="customServiceList" ref="customServiceList"/>
+    </bean>
+
+</beans>

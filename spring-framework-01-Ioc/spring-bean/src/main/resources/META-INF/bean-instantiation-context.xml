@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+<!--    特殊方式初始化 bean-->
+    <!-- 使用 ServiceLoaderFactoryBean 创建 bean  -->
+    <bean id="serviceLoaderFactory" class="org.springframework.beans.factory.serviceloader.ServiceLoaderFactoryBean">
+        <property name="serviceType" value="com.ralph.bean.definition.serviceloader.CustomService"/>
+    </bean>
+
+    <!-- bean 实例工厂，将 ServiceLoader<CustomService> 转换成 List<CustomService> -->
+    <bean id="customServiceFactory" class="com.ralph.bean.definition.factory.CustomServiceFactory">
+        <property name="customServiceServiceLoader" ref="serviceLoaderFactory"/>
+    </bean>
+
+    <!-- 使用 ListFactoryBean 将 ServiceLoader 转换成 List<CustomService> 类型 -->
+    <bean id="listFactoryBean" class="org.springframework.beans.factory.config.ListFactoryBean">
+        <property name="sourceList">
+            <bean factory-bean="customServiceFactory" factory-method="loadCustomServiceByListFactoryBean"/>
+        </property>
+    </bean>
+
+    <!-- 定义 ServiceLoaderFactoryBean -->
+    <bean id="customServiceLoaderDemo" class="com.ralph.bean.definition.service.CustomServiceLoaderDemo">
+        <property name="customServiceList" ref="listFactoryBean"/>
+    </bean>
+</beans>

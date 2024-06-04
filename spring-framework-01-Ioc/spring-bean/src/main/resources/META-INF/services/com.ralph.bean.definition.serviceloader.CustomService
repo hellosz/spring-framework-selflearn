@@ -1,0 +1,3 @@
+# step2: 全限定类名文件和实现类的映射关系维护
+com.ralph.bean.definition.serviceloader.CustomServiceImpl1
+com.ralph.bean.definition.serviceloader.CustomServiceImpl2

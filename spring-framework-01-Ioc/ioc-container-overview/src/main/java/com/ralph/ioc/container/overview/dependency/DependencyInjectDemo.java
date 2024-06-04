@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class DependencyInjectDemo {
     public static void main(String[] args) {
-        String path = "META-INFO/dependency-inject-context.xml";
+        String path = "META-INF/dependency-inject-context.xml";
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(path);
 
 //        lookupByTypeCollection(context);
