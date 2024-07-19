@@ -15,6 +15,7 @@
         <module>spring-framework-04-Web</module>
         <module>spring-framework-01-Ioc/ioc-container-overview</module>
         <module>spring-framework-01-Ioc/spring-bean</module>
+        <module>spring-framework-01-Ioc/dependency-loopup</module>
     </modules>
 
     <properties>
